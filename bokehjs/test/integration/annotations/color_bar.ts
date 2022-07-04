@@ -415,8 +415,9 @@ describe("ColorBar annotation", () => {
       const palette = Spectral11
       const p0 = make_plot(new LinearColorMapper({palette}), "linear", display_low, display_high)
       const p1 = make_plot(new LogColorMapper({palette}), "log", display_low, display_high)
-      const p2 = make_plot(new EqHistColorMapper({palette}), "eq hist", display_low, display_high)
-      return column([p0, p1, p2])
+      const p2 = make_plot(new EqHistColorMapper({palette, rescale_discrete_levels: false}), "eq hist", display_low, display_high)
+      const p3 = make_plot(new EqHistColorMapper({palette, rescale_discrete_levels: true}), "eq hist rescaled", display_low, display_high)
+      return column([p0, p1, p2, p3])
     }
 
     it("low only", async () => {
